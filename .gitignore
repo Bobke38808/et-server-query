@@ -1,0 +1,5 @@
+*.a
+*.o
+example/*
+!example/*.c
+.ycm_extra_conf.py
