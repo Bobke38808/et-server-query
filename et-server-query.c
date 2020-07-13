@@ -118,14 +118,24 @@ void et_server_parse(struct et_server * server, char * response){
 
   char * player = NULL;
   char * token_space = NULL;
+  char * part = NULL;
   struct et_player new_player;
 
 
   while((player = strtok_r(NULL,"\n",&token_line)) != NULL){
     token_space = NULL;
-    new_player.score = atoi(strtok_r(player," ",&token_space));
-    new_player.ping = atoi(strtok_r(NULL," ",&token_space));
-    strncpy(new_player.name, strtok_r(NULL," ",&token_space),MAX_NAME_LENGTH);
+
+    part = strtok_r(player," ",&token_space);
+    if(part == NULL) break;
+    new_player.score = atoi(part);
+
+    part = strtok_r(player," ",&token_space);
+    if(part == NULL) break;
+    new_player.ping = atoi(part);
+
+    part = strtok_r(player," ",&token_space);
+    if(part == NULL) break;
+    strncpy(new_player.name, part, MAX_NAME_LENGTH);
 
     et_server_add_player(server, &new_player);
   }
