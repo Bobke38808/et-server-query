@@ -129,11 +129,11 @@ void et_server_parse(struct et_server * server, char * response){
     if(part == NULL) break;
     new_player.score = atoi(part);
 
-    part = strtok_r(player," ",&token_space);
+    part = strtok_r(NULL," ",&token_space);
     if(part == NULL) break;
     new_player.ping = atoi(part);
 
-    part = strtok_r(player," ",&token_space);
+    part = strtok_r(NULL," ",&token_space);
     if(part == NULL) break;
     strncpy(new_player.name, part, MAX_NAME_LENGTH);
 
