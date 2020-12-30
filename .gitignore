@@ -2,4 +2,5 @@
 *.o
 example/*
 !example/*.c
+!example/Makefile
 .ycm_extra_conf.py
