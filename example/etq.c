@@ -36,7 +36,7 @@ int main(int argc, char * argv[]){
 int get_human_player_count(struct et_server * server){
   int total_count = server->players->count;
   struct et_property * bot_count_property = et_server_find_property(server, "omnibot_playing");
-  int bot_count = atoi(bot_count_property->value);
+  int bot_count = bot_count_property != NULL ? atoi(bot_count_property->value) : 0;
 
   return total_count - bot_count;
 }
